@@ -38,4 +38,34 @@ echo "third arg: ${KEYFILE}"
 
 #Open KEYFILE and store keys and values into an array
 
+awk 'BEGIN {
+while (getline < "'"$INFILE"'")
+{
+split($0,pair,"\t");
+key=pair[1];
+value=pair[2];
+
+pk=key;
+data=value;
+nameArr[pk]=data;
+}
+
+
+
+
+close("'"$INFILE"'");
+
+}'
+
+
+#valor=nameArr[1]
+#
+echo "1 -> $data[1] "
+echo "5 -> $nameArr[5] "
+echo "7 -> $nameArr[7] "
+echo "10 -> $nameArr[10] "
+
+
+
+
 
